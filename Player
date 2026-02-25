@@ -1,0 +1,50 @@
+package week06;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Player {
+    private String name;
+    private List<Card> hand;
+    private int score;
+
+    public Player(String name) {
+        this.name = name;
+        this.hand = new ArrayList<>();
+        this.score = 0;
+    }
+
+    // Getters / Setters
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
+
+    public List<Card> getHand() { return hand; }
+
+    // describe prints player info and calls describe on each card in hand
+    public void describe() {
+        System.out.println(name + " -- score: " + score + " -- hand size: " + hand.size());
+        for (Card c : hand) c.describe();
+    }
+
+    // draw from deck and add to player's hand
+    public void draw(Deck deck) {
+        Card c = deck.draw();
+        if (c != null) {
+            hand.add(c);
+        }
+    }
+
+    // flip removes and returns the top card from the player's hand (index 0). Returns null if no card.
+    public Card flip() {
+        if (hand.isEmpty()) return null;
+        return hand.remove(0);
+    }
+
+    // increment player's score by 1
+    public void incrementScore() {
+        score++;
+    }
+}
