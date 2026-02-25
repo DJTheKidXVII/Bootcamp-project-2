@@ -1,8 +1,5 @@
 package week06;
 
-import java.util.Map;
-import java.util.HashMap;
-
 public class Card {
     private int value;     // 2-14 (11=J,12=Q,13=K,14=Ace)
     private String name;   // e.g. "Ace of Hearts"
