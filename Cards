@@ -1,0 +1,43 @@
+package week06;
+
+import java.util.Map;
+import java.util.HashMap;
+
+public class Card {
+    private int value;     // 2-14 (11=J,12=Q,13=K,14=Ace)
+    private String name;   // e.g. "Ace of Hearts"
+
+    public Card(int value, String suit) {
+        this.value = value;
+        this.name = buildName(value, suit);
+    }
+
+    private String buildName(int value, String suit) {
+        String rank;
+        switch (value) {
+            case 11: rank = "Jack"; break;
+            case 12: rank = "Queen"; break;
+            case 13: rank = "King"; break;
+            case 14: rank = "Ace"; break;
+            default: rank = String.valueOf(value); break;
+        }
+        return rank + " of " + suit;
+    }
+
+    // Getters / Setters
+    public int getValue() { return value; }
+    public void setValue(int value) { this.value = value; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    // Describe prints info about the card
+    public void describe() {
+        System.out.println(getName() + " (value=" + getValue() + ")");
+    }
+
+    @Override
+    public String toString() {
+        return name + " (value=" + value + ")";
+    }
+}
