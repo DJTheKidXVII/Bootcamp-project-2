@@ -1,0 +1,43 @@
+package week06;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Deck {
+    private List<Card> cards;
+
+    public Deck() {
+        cards = new ArrayList<>();
+        populateStandardDeck();
+    }
+
+    private void populateStandardDeck() {
+        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+        // values 2..14 (14 is Ace)
+        for (String suit : suits) {
+            for (int value = 2; value <= 14; value++) {
+                cards.add(new Card(value, suit));
+            }
+        }
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    // draw removes and returns the top card (index 0). Returns null if empty.
+    public Card draw() {
+        if (cards.isEmpty()) return null;
+        return cards.remove(0);
+    }
+
+    public int size() {
+        return cards.size();
+    }
+
+    // For debugging
+    public void describeDeck() {
+        for (Card c : cards) c.describe();
+    }
+}
